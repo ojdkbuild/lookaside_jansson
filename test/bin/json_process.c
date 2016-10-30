@@ -107,6 +107,9 @@ int main(int argc, char *argv[])
     if(getenv_int("JSON_SORT_KEYS"))
         flags |= JSON_SORT_KEYS;
 
+    if(getenv("HASHSEED"))
+        json_object_seed(getenv_int("HASHSEED"));
+
     if(getenv_int("STRIP")) {
         /* Load to memory, strip leading and trailing whitespace */
         size_t size = 0, used = 0;
